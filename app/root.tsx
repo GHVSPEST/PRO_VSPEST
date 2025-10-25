@@ -22,9 +22,11 @@ export const meta = () => [
   {
     name: "description",
     content:
-      "Web oficial de la Cofradía de Nuestra Señora de la Esperanza de Toledo.",
+      "Web oficial de la Cofradía de Nuestra Señora de la Esperanza de Toledo. Información, cultos, historia y contacto de nuestra hermandad GHVSPEST.",
   },
+  { name: "robots", content: "index, follow" },
   { name: "theme-color", content: "#053C2F" },
+  { rel: "canonical", href: "https://virgendelaesperanzatoledo.es" },
 ];
 
 /** Favicon / fuentes / preloads críticos */
