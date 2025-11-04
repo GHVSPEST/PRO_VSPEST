@@ -16,6 +16,17 @@ import { useDayTheme } from "./components/hooks/useDayTheme";
 
 import { useEffect, useState } from "react";
 
+// 🔗 URL base para el canónico
+const CANONICAL_BASE = "https://virgendelaesperanzatoledo.es";
+
+// 🔗 Componente para generar el <link rel="canonical"> dinámico
+function CanonicalLink() {
+  const { pathname } = useLocation();
+  const cleanPath = pathname === "/" ? "" : pathname.replace(/\/+$/, "");
+  const href = `${CANONICAL_BASE}${cleanPath}`;
+  return <link rel="canonical" href={href} />;
+}
+
 /** Título global (y meta básicos) */
 export const meta = () => [
   { title: "Cofradía de Nuestra Señora de la Esperanza de Toledo" },
@@ -26,7 +37,6 @@ export const meta = () => [
   },
   { name: "robots", content: "index, follow" },
   { name: "theme-color", content: "#053C2F" },
-  { rel: "canonical", href: "https://virgendelaesperanzatoledo.es" },
 ];
 
 /** Favicon / fuentes / preloads críticos */
@@ -67,6 +77,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
+        <CanonicalLink />
         <Links />
       </head>
       <body>
